@@ -231,5 +231,13 @@ if [[ -n "${Q_TERM:-}" ]]; then
     export Q_RICH_COMPLETIONS=1
 fi
 
+# Load project context switching
+[[ -r ~/Documents/git/macbook-m-series-dotfiles/shell/functions/project-context.zsh ]] && \
+    source ~/Documents/git/macbook-m-series-dotfiles/shell/functions/project-context.zsh
+
+# Load secure environment variables
+[[ -r ~/Documents/git/macbook-m-series-dotfiles/shell/secure-env.zsh ]] && \
+    source ~/Documents/git/macbook-m-series-dotfiles/shell/secure-env.zsh
+
 # Amazon Q post block. Keep at the bottom of this file.
 [[ -f "${HOME}/Library/Application Support/amazon-q/shell/zshrc.post.zsh" ]] && builtin source "${HOME}/Library/Application Support/amazon-q/shell/zshrc.post.zsh"

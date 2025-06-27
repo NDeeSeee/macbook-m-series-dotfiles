@@ -1,110 +1,163 @@
-# MacBook M-Series Development Environment Setup
+# MacBook M-Series Dotfiles
 
-A comprehensive dotfiles repository for macOS Apple Silicon (M1/M2/M3) development environment setup.
+A comprehensive, optimized dotfiles setup for macOS Apple Silicon development environments. Features intelligent shell configuration, automated maintenance, and emergency recovery capabilities.
 
-## 🚀 Quick Setup
+## 🚀 Quick Start
 
 ```bash
 # Clone the repository
-git clone https://github.com/<username>/macbook-m-series-dotfiles.git
-cd macbook-m-series-dotfiles
+git clone https://github.com/NDeeSeee/macbook-m-series-dotfiles.git ~/Documents/git/macbook-m-series-dotfiles
 
-# Run the setup script
-./setup.sh
+# Run setup
+cd ~/Documents/git/macbook-m-series-dotfiles
+./scripts/setup.sh
 ```
 
-## 📁 Repository Structure
+## 📁 Structure
 
 ```
-├── shell/              # Shell configurations
-│   ├── .zshrc
-│   ├── .zprofile
-│   ├── .bashrc
-│   └── .p10k.zsh
-├── editors/            # Editor configurations
-│   ├── vscode/
-│   ├── cursor/
-│   └── claude/
-├── development/        # Development tools
-│   ├── git/
-│   ├── aws/
-│   ├── docker/
-│   └── kubernetes/
-├── r-environment/      # R configuration
-│   ├── .Renviron
-│   └── packages.txt
-├── homebrew/           # Package management
-│   └── Brewfile
-├── scripts/            # Setup and utility scripts
-│   ├── setup.sh
-│   ├── backup.sh
-│   └── install-packages.sh
-└── docs/              # Documentation
-    └── SETUP.md
+├── shell/                 # Shell configurations
+│   ├── .zshrc            # Main zsh configuration
+│   ├── .p10k.zsh         # Powerlevel10k theme
+│   ├── secure-env.zsh    # Secure environment variables
+│   └── functions/        # Custom shell functions
+├── editors/              # Editor configurations
+│   ├── cursor/           # Cursor AI editor settings
+│   └── vscode/           # VS Code settings
+├── development/          # Development tools config
+├── r-environment/        # R and RStudio setup
+├── homebrew/            # Package management
+└── scripts/             # Automation scripts
 ```
 
-## 🛠 Included Tools & Configurations
+## 🛠️ Essential Scripts
 
-### Shell Environment
-- **Zsh** with Oh My Zsh framework
-- **Powerlevel10k** theme
-- **Zoxide** for smart directory navigation
-- **fzf** for fuzzy finding
-- **Syntax highlighting** and **autosuggestions**
+### Emergency Recovery
+```bash
+# If your shell breaks, run this to restore basic functionality
+./scripts/emergency-reset.sh
+```
+
+### Health Monitoring
+```bash
+# Check system health and performance
+./scripts/health-check.sh
+```
+
+### Maintenance
+```bash
+# Clean up and maintain your system
+./scripts/maintenance.sh
+```
+
+## ✨ Key Features
+
+### 🔒 **Secure Environment Management**
+- Encrypted storage for API keys and tokens
+- Automatic `.gitignore` protection for sensitive files
+- Hardware security key support
+
+```bash
+# Add secure environment variables
+add-secure-env GITHUB_TOKEN "your-token-here"
+list-secure-env  # View configured variables
+```
+
+### 🎯 **Smart Project Context**
+- Automatic environment switching when entering projects
+- Support for `.envrc`, `.nvmrc`, `environment.yml`
+- Python version management with pyenv
+
+### ⚡ **Performance Optimized**
+- Shell startup time < 500ms target
+- Lazy loading of heavy tools
+- Intelligent caching strategies
+
+### 🛡️ **Bulletproof Reliability**
+- Emergency recovery mode
+- Automated health checks
+- Backup verification
+- Conflict-free updates
+
+## 🔧 Configuration
+
+### Shell Performance
+The configuration is optimized for fast startup times:
+- Powerlevel10k with instant prompt
+- Conditional loading of tools
+- Optimized plugin selection
+
+### Editor Integration
+- Cursor AI with curated extensions
+- VS Code settings sync
+- Consistent themes and shortcuts
 
 ### Development Tools
-- **Git** configuration
-- **AWS CLI** setup
-- **Docker** configuration
-- **Kubernetes** (kubectl) setup
-- **VS Code** and **Cursor** editor settings
-- **Claude AI** configuration
+- Homebrew package management
+- Conda environment handling
+- Git configuration with security
 
-### R Environment
-- Environment variables
-- Package management
-- Radian REPL configuration
+## 📊 Monitoring
 
-### Package Management
-- **Homebrew** with Brewfile
-- **Conda/Mamba** environment exports
-
-## 🔧 Features
-
-- **Automated setup** script for new machines
-- **Backup utilities** for current configurations
-- **Modular structure** for easy customization
-- **Security-conscious** (no private keys or secrets)
-- **Apple Silicon optimized** paths and configurations
-
-## 📝 Usage
-
-### First Time Setup
-1. Install Xcode Command Line Tools: `xcode-select --install`
-2. Install Homebrew: `/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"`
-3. Clone this repository and run `./setup.sh`
-
-### Updating Configurations
+### Performance Metrics
 ```bash
-# Backup current configs
-./scripts/backup.sh
+# Check shell startup time
+time zsh -i -c exit
 
-# Make changes and commit
-git add .
-git commit -m "Update configuration"
-git push
+# Run comprehensive health check
+./scripts/health-check.sh
 ```
 
-## 🔄 Maintenance
+### Maintenance Schedule
+- **Weekly**: Run `./scripts/maintenance.sh`
+- **Monthly**: Review `./scripts/health-check.sh` output
+- **As needed**: Use `./scripts/emergency-reset.sh` for issues
 
-- Run `./scripts/backup.sh` regularly to sync changes
-- Update package lists with `./scripts/update-packages.sh`
-- Review and clean up configurations periodically
+## 🚨 Troubleshooting
+
+### Shell Won't Start
+```bash
+# Emergency reset to minimal config
+./scripts/emergency-reset.sh
+```
+
+### Slow Performance
+```bash
+# Check for issues
+./scripts/health-check.sh
+
+# Clean up system
+./scripts/maintenance.sh
+```
+
+### Missing Dependencies
+```bash
+# Reinstall core tools
+./scripts/setup.sh
+```
+
+## 🔄 Updates
+
+```bash
+# Update dotfiles
+cd ~/Documents/git/macbook-m-series-dotfiles
+git pull origin main
+
+# Apply changes
+source ~/.zshrc
+```
 
 ## 🤝 Contributing
 
-Feel free to fork and customize for your own setup. Pull requests welcome for general improvements!
+1. Test changes thoroughly
+2. Run health checks before committing
+3. Update documentation for new features
+4. Keep security in mind for all changes
 
-## 📄 License
+## 📝 License
 
-MIT License - Feel free to use and modify as needed.
+MIT License - Feel free to adapt for your own use.
+
+---
+
+**💡 Pro Tip**: Run `./scripts/health-check.sh` regularly to catch issues early!
