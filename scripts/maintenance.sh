@@ -1,55 +1,33 @@
 #!/bin/bash
-# Simple maintenance script - keep system clean and updated
+# Simplified maintenance script
 set -euo pipefail
 
-echo "🧹 Running Dotfiles Maintenance"
-echo "==============================="
+echo "🧹 Running System Maintenance"
+echo "============================="
 
-# Homebrew maintenance
-if command -v brew &> /dev/null; then
-    echo "🍺 Homebrew Maintenance:"
-    echo "   Cleaning up old versions..."
-    brew cleanup --prune=30 --quiet
-    
-    echo "   Checking for issues..."
-    if ! brew doctor --quiet; then
-        echo "   ⚠️  Homebrew has issues (run 'brew doctor' for details)"
-    else
-        echo "   ✅ Homebrew is healthy"
-    fi
-else
-    echo "❌ Homebrew not found"
-fi
+# Use core functions for package management
+source ~/Documents/git/macbook-m-series-dotfiles/shell/functions/core-functions.zsh
 
-# Conda maintenance (if installed)
-if command -v conda &> /dev/null; then
-    echo ""
-    echo "🐍 Conda Maintenance:"
-    echo "   Cleaning package cache..."
-    conda clean --packages --tarballs --yes --quiet
-    echo "   ✅ Conda cleaned"
-fi
+# Run package cleanup
+clean-packages
 
-# Git maintenance
+# Git repository maintenance
 echo ""
-echo "📦 Git Repository Maintenance:"
+echo "📦 Git Repository Status:"
 cd ~/Documents/git/macbook-m-series-dotfiles
-echo "   Current status:"
-git status --porcelain | head -5
+git status --porcelain | head -3
 
-# Clean up old backup files
+# Clean old emergency backups (keep newest 2)
 echo ""
-echo "🗑️  Cleanup:"
-BACKUP_COUNT=$(find ~ -name ".dotfiles-emergency-backup-*" -type d 2>/dev/null | wc -l)
-if [[ $BACKUP_COUNT -gt 3 ]]; then
-    echo "   Found $BACKUP_COUNT emergency backups (keeping newest 3)"
+echo "🗑️  Backup Cleanup:"
+BACKUP_COUNT=$(find ~ -name ".dotfiles-emergency-backup-*" -type d 2>/dev/null | wc -l | tr -d ' ')
+if [[ $BACKUP_COUNT -gt 2 ]]; then
     find ~ -name ".dotfiles-emergency-backup-*" -type d -print0 2>/dev/null | \
-        xargs -0 ls -dt | tail -n +4 | xargs rm -rf
-    echo "   ✅ Old backups cleaned"
+        xargs -0 ls -dt | tail -n +3 | xargs rm -rf
+    echo "   ✅ Cleaned old backups (kept newest 2)"
 else
     echo "   ✅ Backup count is reasonable ($BACKUP_COUNT)"
 fi
 
 echo ""
 echo "✅ Maintenance complete!"
-echo "💡 Run './scripts/health-check.sh' to verify system health"

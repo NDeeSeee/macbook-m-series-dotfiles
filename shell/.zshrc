@@ -231,29 +231,13 @@ if [[ -n "${Q_TERM:-}" ]]; then
     export Q_RICH_COMPLETIONS=1
 fi
 
-# Load project context switching
-[[ -r ~/Documents/git/macbook-m-series-dotfiles/shell/functions/project-context.zsh ]] && \
-    source ~/Documents/git/macbook-m-series-dotfiles/shell/functions/project-context.zsh
+# Load core development functions
+[[ -r ~/Documents/git/macbook-m-series-dotfiles/shell/functions/core-functions.zsh ]] && \
+    source ~/Documents/git/macbook-m-series-dotfiles/shell/functions/core-functions.zsh
 
 # Load secure environment variables
 [[ -r ~/Documents/git/macbook-m-series-dotfiles/shell/secure-env.zsh ]] && \
     source ~/Documents/git/macbook-m-series-dotfiles/shell/secure-env.zsh
-
-# Load workspace management
-[[ -r ~/Documents/git/macbook-m-series-dotfiles/shell/functions/workspace.zsh ]] && \
-    source ~/Documents/git/macbook-m-series-dotfiles/shell/functions/workspace.zsh
-
-# Load development environment isolation
-[[ -r ~/Documents/git/macbook-m-series-dotfiles/shell/functions/dev-env.zsh ]] && \
-    source ~/Documents/git/macbook-m-series-dotfiles/shell/functions/dev-env.zsh
-
-# Load system monitoring
-[[ -r ~/Documents/git/macbook-m-series-dotfiles/shell/functions/system-monitor.zsh ]] && \
-    source ~/Documents/git/macbook-m-series-dotfiles/shell/functions/system-monitor.zsh
-
-# Load package manager
-[[ -r ~/Documents/git/macbook-m-series-dotfiles/shell/functions/package-manager.zsh ]] && \
-    source ~/Documents/git/macbook-m-series-dotfiles/shell/functions/package-manager.zsh
 
 # Amazon Q post block. Keep at the bottom of this file.
 [[ -f "${HOME}/Library/Application Support/amazon-q/shell/zshrc.post.zsh" ]] && builtin source "${HOME}/Library/Application Support/amazon-q/shell/zshrc.post.zsh"

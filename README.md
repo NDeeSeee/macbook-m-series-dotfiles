@@ -1,6 +1,6 @@
 # MacBook M-Series Dotfiles
 
-A comprehensive, optimized dotfiles setup for macOS Apple Silicon development environments. Features intelligent shell configuration, automated maintenance, and emergency recovery capabilities.
+A clean, optimized dotfiles setup for macOS Apple Silicon development environments. Features intelligent shell configuration, automated maintenance, and emergency recovery capabilities.
 
 ## 🚀 Quick Start
 
@@ -20,144 +20,143 @@ cd ~/Documents/git/macbook-m-series-dotfiles
 │   ├── .zshrc            # Main zsh configuration
 │   ├── .p10k.zsh         # Powerlevel10k theme
 │   ├── secure-env.zsh    # Secure environment variables
-│   └── functions/        # Custom shell functions
+│   └── functions/        # Core development functions
 ├── editors/              # Editor configurations
-│   ├── cursor/           # Cursor AI editor settings
-│   └── vscode/           # VS Code settings
 ├── development/          # Development tools config
 ├── r-environment/        # R and RStudio setup
 ├── homebrew/            # Package management
-└── scripts/             # Automation scripts
+└── scripts/             # Essential automation scripts
 ```
 
-## 🛠️ Essential Scripts
+## 🛠️ Core Functions
+
+All functionality is consolidated into a single, clean `core-functions.zsh` file:
+
+### Workspace Management
+```bash
+workspace myproject    # Create/switch to workspace
+new-project api node   # Quick project creation
+```
+
+### System Monitoring
+```bash
+sys                   # Quick system status
+top-procs            # Show top processes
+```
+
+### Package Management
+```bash
+install-essentials   # Install core development tools
+update-all          # Update all package managers
+clean-packages      # Clean package caches
+```
+
+### Secure Environment
+```bash
+add-secure-env GITHUB_TOKEN "your-token"
+list-secure-env     # View configured variables
+```
+
+## 🚨 Emergency Scripts
 
 ### Emergency Recovery
 ```bash
-# If your shell breaks, run this to restore basic functionality
-./scripts/emergency-reset.sh
+./scripts/emergency-reset.sh  # Restore basic shell functionality
 ```
 
-### Health Monitoring
+### System Maintenance
 ```bash
-# Check system health and performance
-./scripts/health-check.sh
-```
-
-### Maintenance
-```bash
-# Clean up and maintain your system
-./scripts/maintenance.sh
+./scripts/maintenance.sh      # Clean and maintain system
 ```
 
 ## ✨ Key Features
 
-### 🔒 **Secure Environment Management**
+### 🔒 **Security First**
 - Encrypted storage for API keys and tokens
-- Automatic `.gitignore` protection for sensitive files
-- Hardware security key support
-
-```bash
-# Add secure environment variables
-add-secure-env GITHUB_TOKEN "your-token-here"
-list-secure-env  # View configured variables
-```
-
-### 🎯 **Smart Project Context**
-- Automatic environment switching when entering projects
-- Support for `.envrc`, `.nvmrc`, `environment.yml`
-- Python version management with pyenv
+- Comprehensive `.gitignore` protection
+- Secure file permissions (600) for sensitive data
 
 ### ⚡ **Performance Optimized**
-- Shell startup time < 500ms target
-- Lazy loading of heavy tools
-- Intelligent caching strategies
+- Single consolidated function file (no redundancy)
+- Fast shell startup with lazy loading
+- Efficient resource usage
 
 ### 🛡️ **Bulletproof Reliability**
 - Emergency recovery mode
-- Automated health checks
-- Backup verification
-- Conflict-free updates
+- Automated maintenance
+- Clean, conflict-free updates
 
-## 🔧 Configuration
+### 🎯 **Smart Context Switching**
+- Automatic environment detection (.nvmrc, .python-version, etc.)
+- Workspace organization with tmux integration
+- Project-specific configurations
 
-### Shell Performance
-The configuration is optimized for fast startup times:
-- Powerlevel10k with instant prompt
-- Conditional loading of tools
-- Optimized plugin selection
+## 📊 Usage Examples
 
-### Editor Integration
-- Cursor AI with curated extensions
-- VS Code settings sync
-- Consistent themes and shortcuts
-
-### Development Tools
-- Homebrew package management
-- Conda environment handling
-- Git configuration with security
-
-## 📊 Monitoring
-
-### Performance Metrics
+### Daily Workflow
 ```bash
-# Check shell startup time
-time zsh -i -c exit
+# Start new project
+workspace my-startup
+new-project backend-api node
 
-# Run comprehensive health check
-./scripts/health-check.sh
+# Check system health
+sys
+
+# Maintain system
+./scripts/maintenance.sh
 ```
 
-### Maintenance Schedule
-- **Weekly**: Run `./scripts/maintenance.sh`
-- **Monthly**: Review `./scripts/health-check.sh` output
-- **As needed**: Use `./scripts/emergency-reset.sh` for issues
+### Development Setup
+```bash
+# Install essential tools
+install-essentials
+
+# Update everything
+update-all
+
+# Add secure credentials
+add-secure-env OPENAI_API_KEY "sk-..."
+```
+
+## 🔧 Customization
+
+Edit `shell/functions/core-functions.zsh` to customize:
+- Workspace templates
+- System monitoring thresholds  
+- Package installation lists
+- Project detection logic
 
 ## 🚨 Troubleshooting
 
 ### Shell Won't Start
 ```bash
-# Emergency reset to minimal config
 ./scripts/emergency-reset.sh
 ```
 
-### Slow Performance
+### Performance Issues
 ```bash
-# Check for issues
-./scripts/health-check.sh
-
-# Clean up system
-./scripts/maintenance.sh
-```
-
-### Missing Dependencies
-```bash
-# Reinstall core tools
-./scripts/setup.sh
+sys                    # Check system status
+./scripts/maintenance.sh  # Clean up system
 ```
 
 ## 🔄 Updates
 
 ```bash
-# Update dotfiles
 cd ~/Documents/git/macbook-m-series-dotfiles
 git pull origin main
-
-# Apply changes
 source ~/.zshrc
 ```
 
-## 🤝 Contributing
+## 📝 What's Different
 
-1. Test changes thoroughly
-2. Run health checks before committing
-3. Update documentation for new features
-4. Keep security in mind for all changes
+This is a **cleaned and consolidated** version that eliminates:
+- ❌ Redundant function files (5 files → 1 file)
+- ❌ Overlapping functionality 
+- ❌ Complex, oversized scripts
+- ❌ Duplicate system monitoring
 
-## 📝 License
-
-MIT License - Feel free to adapt for your own use.
+**Result**: Faster loading, easier maintenance, cleaner codebase.
 
 ---
 
-**💡 Pro Tip**: Run `./scripts/health-check.sh` regularly to catch issues early!
+**💡 Pro Tip**: All functions are now in one place - `shell/functions/core-functions.zsh` - making customization simple and maintenance easy!
