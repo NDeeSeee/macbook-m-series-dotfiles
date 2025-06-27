@@ -1,0 +1,13 @@
+{
+  "editor.fontSize": 14,
+  "editor.fontFamily": "SF Mono, Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace",
+  "editor.tabSize": 2,
+  "editor.insertSpaces": true,
+  "editor.wordWrap": "on",
+  "editor.minimap.enabled": false,
+  "workbench.colorTheme": "Default Dark+",
+  "terminal.integrated.fontSize": 13,
+  "files.autoSave": "afterDelay",
+  "files.autoSaveDelay": 1000,
+  "extensions.autoUpdate": false
+}

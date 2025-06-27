@@ -1,0 +1,21 @@
+# Cursor Extensions List
+# Install these extensions manually or via script
+
+# Essential Extensions
+ms-python.python
+ms-vscode.vscode-json
+bradlc.vscode-tailwindcss
+esbenp.prettier-vscode
+ms-vscode.vscode-typescript-next
+
+# AI/ML Extensions
+github.copilot
+github.copilot-chat
+
+# Development Tools
+ms-vscode.vscode-eslint
+formulahendry.auto-rename-tag
+christian-kohler.path-intellisense
+
+# Note: Large extensions with binaries are excluded from git
+# Run setup script to install all extensions automatically
