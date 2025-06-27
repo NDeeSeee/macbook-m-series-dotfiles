@@ -1,0 +1,479 @@
+{
+	"publisher": "edwinhuish",
+	"name": "better-comments-next",
+	"displayName": "Better Comments Next",
+	"version": "3.4.3",
+	"description": "Improve your code commenting by annotating with alert, informational, TODOs, and more!",
+	"author": {
+		"name": "Edwin Xu"
+	},
+	"sponsor": {
+		"url": "https://github.com/sponsors/edwinhuish"
+	},
+	"license": "MIT",
+	"homepage": "https://github.com/edwinhuish/better-comments-next/blob/master/README.md",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/edwinhuish/better-comments-next"
+	},
+	"bugs": "https://github.com/edwinhuish/better-comments-next/issues",
+	"keywords": [
+		"highlight",
+		"color",
+		"comment",
+		"comments",
+		"todo",
+		"todos",
+		"todo-list",
+		"todo-lists",
+		"todo-tree",
+		"asciidoc",
+		"apex",
+		"javascript",
+		"javascriptreact",
+		"typescript",
+		"typescriptreact",
+		"al",
+		"c",
+		"cpp",
+		"csharp",
+		"dart",
+		"flax",
+		"fsharp",
+		"go",
+		"groovy",
+		"haxe",
+		"java",
+		"jsonc",
+		"kotlin",
+		"less",
+		"pascal",
+		"objectpascal",
+		"php",
+		"rust",
+		"scala",
+		"sass",
+		"scss",
+		"stylus",
+		"swift",
+		"verilog",
+		"css",
+		"coffeescript",
+		"dockerfile",
+		"gdscript",
+		"graphql",
+		"julia",
+		"makefile",
+		"perl",
+		"perl6",
+		"puppet",
+		"r",
+		"ruby",
+		"shellscript",
+		"tcl",
+		"yaml",
+		"elixir",
+		"python",
+		"nim",
+		"powershell",
+		"ada",
+		"hive-sql",
+		"pig",
+		"plsql",
+		"sql",
+		"lua",
+		"elm",
+		"haskell",
+		"vb",
+		"asp",
+		"diagram",
+		"bibtex",
+		"erlang",
+		"latex",
+		"matlab",
+		"clojure",
+		"elps",
+		"racket",
+		"lisp",
+		"terraform",
+		"COBOL",
+		"fortran-modern",
+		"SAS",
+		"stata",
+		"html",
+		"xml",
+		"markdown",
+		"vue",
+		"twig",
+		"genstat",
+		"cfml",
+		"shaderlab",
+		"razor"
+	],
+	"categories": [
+		"Formatters"
+	],
+	"main": "./dist/extension.js",
+	"icon": "static/icon.png",
+	"browser": "./dist/extension.web.js",
+	"engines": {
+		"vscode": "^1.65.0"
+	},
+	"extensionKind": [
+		"workspace"
+	],
+	"activationEvents": [
+		"onLanguage"
+	],
+	"galleryBanner": {
+		"color": "#e3f4ff",
+		"theme": "light"
+	},
+	"contributes": {
+		"configuration": {
+			"title": "Better Comments Next",
+			"properties": {
+				"better-comments.highlightPlainText": {
+					"type": "boolean",
+					"description": "Whether the plaintext comment highlighter should be active",
+					"default": false
+				},
+				"better-comments.tags": {
+					"type": "array",
+					"description": "Tags which are used to color the comments.",
+					"items": {
+						"type": "object",
+						"title": "tag item",
+						"properties": {
+							"tag": {
+								"type": [
+									"string",
+									"array"
+								],
+								"description": "Name of tag, case insensitive, could be string or string[]",
+								"items": {
+									"type": "string"
+								}
+							},
+							"color": {
+								"type": "string",
+								"description": "Font color, eg: #FF2D00"
+							},
+							"strikethrough": {
+								"type": "boolean",
+								"description": "Enable text strikethrough."
+							},
+							"underline": {
+								"type": "boolean",
+								"description": "Enable text underline."
+							},
+							"backgroundColor": {
+								"type": "string",
+								"description": "Background color, eg: transparent"
+							},
+							"bold": {
+								"type": "boolean",
+								"description": "Set text font style to bold."
+							},
+							"italic": {
+								"type": "boolean",
+								"description": "Set text font style to italic."
+							},
+							"multiline": {
+								"type": "boolean",
+								"description": "Enable multiline comments decoration until reach blank line."
+							}
+						}
+					},
+					"default": [
+						{
+							"tag": "#",
+							"color": "#18b566",
+							"strikethrough": false,
+							"underline": false,
+							"backgroundColor": "transparent",
+							"bold": true,
+							"italic": false
+						},
+						{
+							"tag": "!",
+							"color": "#FF2D00",
+							"strikethrough": false,
+							"underline": false,
+							"backgroundColor": "transparent",
+							"bold": false,
+							"italic": false
+						},
+						{
+							"tag": "?",
+							"color": "#3498DB",
+							"strikethrough": false,
+							"underline": false,
+							"backgroundColor": "transparent",
+							"bold": false,
+							"italic": false
+						},
+						{
+							"tag": "//",
+							"color": "#474747",
+							"strikethrough": true,
+							"underline": false,
+							"backgroundColor": "transparent",
+							"bold": false,
+							"italic": false
+						},
+						{
+							"tag": [
+								"todo",
+								"to-do"
+							],
+							"color": "#FF8C00",
+							"strikethrough": false,
+							"underline": false,
+							"backgroundColor": "transparent",
+							"bold": false,
+							"italic": false,
+							"multiline": true
+						},
+						{
+							"tag": "*",
+							"color": "#98C379",
+							"strikethrough": false,
+							"underline": false,
+							"backgroundColor": "transparent",
+							"bold": false,
+							"italic": false
+						},
+						{
+							"tag": "bug",
+							"color": "#E84393",
+							"strikethrough": false,
+							"underline": true,
+							"backgroundColor": "#FDA7DF20",
+							"bold": true,
+							"italic": false
+						},
+						{
+							"tag": "hack",
+							"color": "#9B59B6",
+							"strikethrough": false,
+							"underline": false,
+							"backgroundColor": "#9B59B620",
+							"bold": true,
+							"italic": true
+						},
+						{
+							"tag": [
+								"fixme",
+								"fix-me",
+								"fix"
+							],
+							"color": "#FD79A8",
+							"strikethrough": false,
+							"underline": false,
+							"backgroundColor": "#FD79A820",
+							"bold": true,
+							"italic": false
+						}
+					]
+				},
+				"better-comments.tagsLight": {
+					"type": "array",
+					"description": "Overwrite tags options for light themes",
+					"items": {
+						"type": "object",
+						"title": "tag item",
+						"properties": {
+							"tag": {
+								"type": [
+									"string",
+									"array"
+								],
+								"description": "Name of tag, case insensitive, could be string or string[]",
+								"items": {
+									"type": "string"
+								}
+							},
+							"color": {
+								"type": "string",
+								"description": "Font color, eg: #FF2D00"
+							},
+							"strikethrough": {
+								"type": "boolean",
+								"description": "Enable text strikethrough."
+							},
+							"underline": {
+								"type": "boolean",
+								"description": "Enable text underline."
+							},
+							"backgroundColor": {
+								"type": "string",
+								"description": "Background color, eg: transparent"
+							},
+							"bold": {
+								"type": "boolean",
+								"description": "Set text font style to bold."
+							},
+							"italic": {
+								"type": "boolean",
+								"description": "Set text font style to italic."
+							}
+						}
+					},
+					"default": []
+				},
+				"better-comments.tagsDark": {
+					"type": "array",
+					"description": "Overwrite tags options for dark themes",
+					"items": {
+						"type": "object",
+						"title": "tag item",
+						"properties": {
+							"tag": {
+								"type": [
+									"string",
+									"array"
+								],
+								"description": "Name of tag, case insensitive, could be string or string[]",
+								"items": {
+									"type": "string"
+								}
+							},
+							"color": {
+								"type": "string",
+								"description": "Font color, eg: #FF2D00"
+							},
+							"strikethrough": {
+								"type": "boolean",
+								"description": "Enable text strikethrough."
+							},
+							"underline": {
+								"type": "boolean",
+								"description": "Enable text underline."
+							},
+							"backgroundColor": {
+								"type": "string",
+								"description": "Background color, eg: transparent"
+							},
+							"bold": {
+								"type": "boolean",
+								"description": "Set text font style to bold."
+							},
+							"italic": {
+								"type": "boolean",
+								"description": "Set text font style to italic."
+							}
+						}
+					},
+					"default": []
+				},
+				"better-comments.languages": {
+					"type": "array",
+					"description": "List of languages that missing comments definition.",
+					"items": {
+						"type": "object",
+						"title": "language item",
+						"required": [
+							"id"
+						],
+						"properties": {
+							"id": {
+								"type": "string",
+								"description": "The language id"
+							},
+							"comments": {
+								"type": "object",
+								"description": "The comment definition",
+								"properties": {
+									"lineComment": {
+										"type": "string",
+										"description": "The line comment token, like `//`",
+										"examples": [
+											"//"
+										]
+									},
+									"blockComment": {
+										"type": "array",
+										"maxItems": 2,
+										"minItems": 2,
+										"description": "The block comment character pair, like `/*` `*/`",
+										"examples": [
+											"/*",
+											"*/"
+										]
+									}
+								}
+							},
+							"useDocComment": {
+								"type": "boolean",
+								"description": "Whether the language use doc comment",
+								"default": true
+							},
+							"embeddedLanguages": {
+								"type": "array",
+								"description": "List of embedded language ids",
+								"items": {
+									"type": "string",
+									"description": "The embedded language id"
+								}
+							}
+						}
+					}
+				},
+				"better-comments.updateDelay": {
+					"type": "number",
+					"description": "Millisecond delay for update decorations, default 0",
+					"default": 0
+				},
+				"better-comments.preloadLines": {
+					"type": "number",
+					"description": "Preload lines outside the visible window for better performance, default 100",
+					"default": 100
+				}
+			}
+		}
+	},
+	"scripts": {
+		"clean:dist": "rimraf dist",
+		"vscode:prepublish": "npm run package",
+		"package": "npm run clean:dist && npm run lint && npm run build && npm run build-web",
+		"build": "tsup --config=build/tsup.node.js",
+		"watch": "tsup --config=build/tsup.node.js --watch",
+		"build-web": "tsup --config=build/tsup.web.js",
+		"watch-web": "tsup --config=build/tsup.web.js --watch",
+		"lint": "npm run lint:type && npm run lint:eslint",
+		"lint:type": "tsc -p . --noEmit",
+		"lint:eslint": "eslint --cache --max-warnings 0 . --fix"
+	},
+	"dependencies": {
+		"json5": "^2.2.3"
+	},
+	"devDependencies": {
+		"@antfu/eslint-config": "^3.11.2",
+		"@types/node": "^17.0.23",
+		"@types/vscode": "^1.65.0",
+		"eslint": "^9.16.0",
+		"husky": "^8.0.3",
+		"lint-staged": "^15.1.0",
+		"path-browserify": "^1.0.1",
+		"process": "^0.11.10",
+		"rimraf": "^5.0.5",
+		"tsup": "^8.0.2",
+		"typescript": "^5.5.4",
+		"typescript-eslint": "^8"
+	},
+	"__metadata": {
+		"id": "fbacb7e9-e750-49db-a1c0-d94617178938",
+		"publisherId": "f9fe679d-98ee-437c-9556-46fa40626725",
+		"publisherDisplayName": "edwinhuish",
+		"targetPlatform": "universal",
+		"isApplicationScoped": false,
+		"isPreReleaseVersion": false,
+		"hasPreReleaseVersion": false,
+		"installedTimestamp": 1750935751292,
+		"pinned": false,
+		"preRelease": false,
+		"source": "gallery",
+		"size": 391811
+	}
+}

@@ -1,0 +1,76 @@
+# Sensitive files - never commit these
+**/credentials
+**/secrets
+**/.env
+**/id_rsa*
+**/id_ed25519*
+**/*.pem
+**/*.key
+**/password*
+**/token*
+
+# AWS credentials
+.aws/credentials
+.aws/cli/cache/
+
+# SSH keys
+.ssh/id_*
+.ssh/*_rsa*
+.ssh/*.pem
+
+# Claude API keys or sensitive configs
+.claude/api_key
+.claude/session*
+
+# macOS system files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.temp
+*.log
+*.swp
+*.swo
+*~
+
+# Editor specific
+.vscode/settings.json
+.cursor/settings.json
+
+# History files
+*_history
+*.history
+
+# Cache directories
+.cache/
+.zcompdump*
+.zsh_sessions/
+
+# Local environment files
+.env.local
+.env.*.local
+
+# Package manager files that might contain sensitive info
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+pip-log.txt
+pip-delete-this-directory.txt
+
+# R
+.Rhistory
+.RData
+.Ruserdata

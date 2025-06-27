@@ -1,0 +1,83 @@
+{
+	"name": "search-history",
+	"displayName": "Search History",
+	"description": "Search and replace with history",
+	"version": "0.0.2",
+	"publisher": "solomonkinard",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/solomonkinard/public"
+	},
+	"icon": "icon/128.png",
+	"keywords": [
+		"search",
+		"find",
+		"memory",
+		"recall",
+		"replace",
+		"list"
+	],
+	"engines": {
+		"vscode": "^1.77.0"
+	},
+	"categories": [
+		"Programming Languages"
+	],
+	"activationEvents": [],
+	"main": "./out/extension.js",
+	"contributes": {
+		"views": {
+			"explorer": [
+				{
+					"id": "search-history.view",
+					"name": "Search History",
+					"type": "webview",
+					"when": "editorIsOpen && !editorReadonly"
+				}
+			]
+		}
+	},
+	"scripts": {
+		"compile": "npm run esbuild",
+		"watch": "tsc -watch -p ./",
+		"vscode:prepublish": "npm run clean && npm run esbuild-base -- --minify && npm run copyJS",
+		"esbuild-base": "esbuild ./src/extension.ts --bundle --outfile=out/extension.js --external:vscode --format=cjs --platform=node",
+		"esbuild": "npm run esbuild-base -- --sourcemap",
+		"esbuild-watch": "npm run esbuild-base -- --sourcemap --watch",
+		"lint": "eslint src --ext ts",
+		"test": "node ./out/test/runTest.js",
+		"clean": "rm -rf out/*",
+		"copyJS": "mkdir -p out/src/webviews; minify src/webviews/script.js > out/src/webviews/script.js"
+	},
+	"devDependencies": {
+		"@types/glob": "^8.0.0",
+		"@types/mocha": "^10.0.1",
+		"@types/node": "16.x",
+		"@types/vscode": "^1.77.0",
+		"@typescript-eslint/eslint-plugin": "^5.45.0",
+		"@typescript-eslint/parser": "^5.45.0",
+		"@vscode/test-electron": "^2.2.0",
+		"eslint": "^8.28.0",
+		"glob": "^8.0.3",
+		"mocha": "^10.1.0",
+		"typescript": "^4.9.3"
+	},
+	"dependencies": {
+		"esbuild": "^0.17.18",
+		"minify": "^9.2.0"
+	},
+	"__metadata": {
+		"id": "371fcf6b-e3f4-49cf-992b-0ad6fb6bd459",
+		"publisherId": "e14ece89-5451-4498-84e6-da39a47610d5",
+		"publisherDisplayName": "solomonkinard",
+		"targetPlatform": "universal",
+		"isApplicationScoped": false,
+		"isPreReleaseVersion": false,
+		"hasPreReleaseVersion": false,
+		"installedTimestamp": 1750929768912,
+		"pinned": false,
+		"preRelease": false,
+		"source": "gallery",
+		"size": 20863
+	}
+}

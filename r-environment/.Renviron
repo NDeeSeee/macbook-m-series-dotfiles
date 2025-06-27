@@ -1,0 +1,4 @@
+# R Environment Settings for ARM64 Mac
+LIBRARY_PATH=/Library/Developer/CommandLineTools/usr/lib
+R_LIBS_USER=/opt/homebrew/Caskroom/mambaforge/base/lib/R/library
+

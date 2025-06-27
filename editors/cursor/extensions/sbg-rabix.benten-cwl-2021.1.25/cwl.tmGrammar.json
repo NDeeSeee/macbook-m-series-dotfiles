@@ -1,0 +1,75 @@
+{
+	"scopeName": "source.cwl",
+	"name": "cwl",
+	"patterns": [
+		{"include": "#keywords"},
+		{"include": "#strings"},
+		{"include": "#comments"},
+		{"include": "#js-expression"},
+		{"include": "#parameter-reference"}
+	],
+	"repository": {
+		"comments": {
+			"patterns": [
+				{
+					"name": "comment.line.number-sign",
+					"match": "#.*$"
+				}
+			]
+		},
+		"keywords": {
+			"patterns": [{
+				"name": "keyword.control.cwl",
+				"match": "\\b(arguments|baseCommand|basename|checksum|class|contents|coresMax|coresMin|cwlVersion|default|dirname|doc|dockerFile|dockerImageId|dockerImport|dockerLoad|dockerOutputDirectory|dockerPull|entry|entryname|envDef|envName|envValue|expression|expressionLib|fields|format|format|glob|hints|id|in|inputBinding|inputs|itemSeparator|items|label|linkMerge|linkMerge|listing|loadContents|location|merge_flattened|merge_nested|nameext|nameroot|out|outdirMax|outdirMin|outputBinding|outputEval|outputSource|outputs|package|packages|path|permanentFailCodes|pickValue|position|prefix|ramMax|ramMin|requirements|run|scatter|scatterMethod|secondaryFiles|separate|shellQuote|size|source|specs|stderr|stdin|stdout|steps|streamable|successCodes|symbols|temporaryFailCodes|tmpdirMax|tmpdirMin|type|types|valueFrom|valueFrom|version|when|writable)(?=:)"
+			},
+			{
+				"name": "support.type.cwl",
+				"match": "\\b(CommandLineTool|ExpressionTool|Workflow|InlineJavascriptRequirement|SchemaDefRequirement|DockerRequirement|SoftwareRequirement|InitialWorkDirRequirement|EnvVarRequirement|ShellCommandRequirement|StepInputExpressionRequirement|ResourceRequirement)\\b"
+			},
+			{
+				"name": "storage.type.cwl",
+				"match": "\\s+(null|boolean|int|long|float|double|string|File|Directory)\\b"
+			},
+			{
+				"name": "storage.constant.cwl",
+				"match": "\\b(v1.0|v1.1)\\b"
+			}
+		]
+		},
+		"strings": {
+			"name": "string.quoted.double.cwl",
+			"begin": "\"",
+			"end": "\"",
+			"patterns": [
+				{
+					"name": "constant.character.escape.cwl",
+					"match": "\\\\."
+				}
+			]
+		},
+		"js-expression": {
+      "begin": "\\$\\{",
+      "end": "\\}",
+      "beginCaptures": {
+        "0": { "name": "meta.embedded.block.javascript.open" }
+      },
+      "endCaptures": {
+        "0": { "name": "meta.embedded.block.javascript.close" }
+      },
+			"name": "meta.embedded.block.javascript",
+			"patterns": [{"include": "source.js"}]
+		},
+		"parameter-reference": {
+      "begin": "\\$\\(",
+      "end": "\\)",
+      "beginCaptures": {
+        "0": { "name": "meta.embedded.block.javascript.open" }
+      },
+      "endCaptures": {
+        "0": { "name": "meta.embedded.block.javascript.close" }
+      },
+			"name": "meta.embedded.block.javascript",
+			"patterns": [{"include": "source.js"}]
+		}
+	}
+}

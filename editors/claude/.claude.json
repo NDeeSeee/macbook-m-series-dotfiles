@@ -1,0 +1,374 @@
+{
+  "numStartups": 11,
+  "installMethod": "local",
+  "autoUpdates": true,
+  "tipsHistory": {
+    "new-user-warmup": 1,
+    "ide-hotkey": 2,
+    "theme-command": 3,
+    "shift-enter": 6,
+    "prompt-queue": 7,
+    "enter-to-steer-in-relatime": 8,
+    "todo-list": 9,
+    "install-github-app": 10,
+    "drag-and-drop-images": 11
+  },
+  "memoryUsageCount": 17,
+  "promptQueueUseCount": 3,
+  "firstStartTime": "2025-06-24T00:08:09.888Z",
+  "userID": "81debd53e237a0eb71cbec1afd0876a490d7de26927f914ba9b6c004891b71cf",
+  "projects": {
+    "/Users/pavb5f": {
+      "allowedTools": [],
+      "history": [],
+      "mcpContextUris": [],
+      "mcpServers": {},
+      "enabledMcpjsonServers": [],
+      "disabledMcpjsonServers": [],
+      "hasTrustDialogAccepted": false,
+      "projectOnboardingSeenCount": 0,
+      "hasClaudeMdExternalIncludesApproved": false,
+      "hasClaudeMdExternalIncludesWarningShown": false
+    },
+    "/Users/pavb5f/Documents/barskilab-workflows": {
+      "allowedTools": [],
+      "history": [
+        {
+          "display": "Please proceed with that. ",
+          "pastedContents": {}
+        },
+        {
+          "display": "Using the memory you have proceed testing in my_local_test_data dir - there instructions and scripts. But create using reasoning and chain-of-thoughts the plan wih managable and clear steps. Then implement. First analyse what you are already created. Then proceed with what left. Critique your plan. Explain each step for it reasonability. Proceed again. Make sure all redundant files/scripts removed (but explain and make sure first). Analyse recent commits - critique them as well. If there anything wrong or incorrect - fix that. Proceed.",
+          "pastedContents": {}
+        },
+        {
+          "display": "please proceed testing of my_local_test_data using your memory and readme. ",
+          "pastedContents": {}
+        },
+        {
+          "display": "Now please proceed with testing. Investigate what those R issues are and fix them. You know where the scripts are located and dockerfiles, right?",
+          "pastedContents": {}
+        },
+        {
+          "display": "/compact ",
+          "pastedContents": {}
+        },
+        {
+          "display": "now please proceed with testing. ",
+          "pastedContents": {}
+        },
+        {
+          "display": "\"Review the CLAUDE.md file and suggest improvements based on:\n- Recent repetitive errors or issues we've encountered\n- Inefficient patterns you've noticed in our workflow\n- Missing context that would help you work more effectively\nPlease provide specific, actionable updates organized by section.\"\\\n\"Look at our interaction history and identify:\n- My coding style preferences you've learned\n- Project-specific conventions we follow\n- Frequently needed but undocumented commands\nAdd these as structured memories to CLAUDE.md\"\\\n\"Suggest CLAUDE.md updates that would:\n- Reduce the number of clarifying questions you need to ask\n- Speed up our most common tasks (testing, debugging, deployment)\n- Prevent the errors we've encountered multiple times\"\\\nThen critique your own suggestions and get it again. Then make sure they are following key principles: Actionable over descriptive, Context-specific, Error-prevention focused, Tool-specific shortcuts. ",
+          "pastedContents": {}
+        },
+        {
+          "display": "/memory ",
+          "pastedContents": {}
+        },
+        {
+          "display": "#Use modern (cutting-edge) CLI tools for ease (efficient) navigating and files manipulationg. ",
+          "pastedContents": {}
+        },
+        {
+          "display": "#Always make sure script is using efficient and advanced libraries / methods. It's often a trouble with out-of-date. Especially things in R like tidyverse, Seurat and so on. Also always use the :: to clarify what package the function calls from. Also don't forget about the conflicted package - I mean ideally you need to use it with one file for several functions for example. ",
+          "pastedContents": {}
+        },
+        {
+          "display": "#Always check paths in the files - they have to be relative if only it's not mandatory to be absolute. ",
+          "pastedContents": {}
+        },
+        {
+          "display": "#Always keep minimalistic style - don't create a lot of new files if only it is not indeed required (and you have to explain and prove it at least to yourself). Same logic works for individual scripts - keep it minimalistic with all modular functions - they must be managable and clear. One function - one purpose. ",
+          "pastedContents": {}
+        },
+        {
+          "display": "Please proceed",
+          "pastedContents": {}
+        },
+        {
+          "display": "Please proceed with testing. ",
+          "pastedContents": {}
+        },
+        {
+          "display": "Now please proceed with testing. ",
+          "pastedContents": {}
+        },
+        {
+          "display": "#When working with Docker - ALWAYS check docker images to find redundant / out-of-date images and remove them. Use prune commang to clean. ",
+          "pastedContents": {}
+        },
+        {
+          "display": "Now please proceed with testing docker images. ",
+          "pastedContents": {}
+        },
+        {
+          "display": "/compact ",
+          "pastedContents": {}
+        },
+        {
+          "display": "Well. Now revise git changes you did. ALso remove HPC_DEPLOYMENT_GUIDE.md (do we need it?) and update your memory with short direct instructions instead to handle all that docker stuff. Same about \"update_cwl_amd64.sh\" script.",
+          "pastedContents": {}
+        },
+        {
+          "display": "Well. What do you think about this one? [Pasted text #1 +21 lines]",
+          "pastedContents": {
+            "1": {
+              "id": 1,
+              "type": "text",
+              "content": "- name: Handle Docker multi-arch images on Apple Silicon\n  when: sees a CWL `DockerRequirement` or any `docker run --platform linux/amd64`\n  do:\n    - If host architecture is arm64 and image manifest only lists amd64:\n        • FIRST try to run with QEMU emulation:\n            docker run --platform linux/amd64 …\n        • IF performance is unacceptable or QEMU isn’t available:\n            – Recommend: rebuild the image as multi-arch with Buildx:\n              \n              docker buildx create --use  \n              docker buildx build \\\n                --platform linux/arm64,linux/amd64 \\\n                -t $IMAGE:multiarch \\\n                --push \\\n                .\n    - Once one of these paths is chosen, **store** into your memory:\n\n      “For amd64-only Docker images on Apple Silicon, use QEMU for quick tests; for production or heavy tasks, build or pull a multi-arch image with Buildx, or route to an x86 host.”  \n\n    - Always double-check manifest platforms:\n\n      docker buildx imagetools inspect $IMAGE:tag"
+            }
+          }
+        },
+        {
+          "display": "Now please revise changes you made and make sure there's no redundant files. Then proceed with testing (making sure the docker image is working now, start with docker pull and docker run).",
+          "pastedContents": {}
+        },
+        {
+          "display": "Yes please proceed",
+          "pastedContents": {}
+        },
+        {
+          "display": "Well, I confused again. I have a docker image with AMD architecture. And I need it to be so - then to run on HPC linux cluster. So I need to docker build it using the platform flag since I'm on ARM machine. Also, when I do docker pull I also need to... what?",
+          "pastedContents": {}
+        },
+        {
+          "display": "#Instead of creating a lot of \"md\" files with description rahter update the CLAUDE.md or memories. Keep it minimalistic. ",
+          "pastedContents": {}
+        },
+        {
+          "display": "Wait. I just got an answer from cursor right here. PLease again carefully revise and select the most effecient way:🚀 Performance Benefits:\nNative ARM64: ~3x faster execution\nReduced memory usage: No emulation overhead\nBetter battery life: Native ARM64 operations\nFinal Configuration Status:\n✅ Removed global platform forcing from both .zshrc and Claude settings\n✅ Verified ARM64 native images work perfectly\n✅ Updated Claude permissions to allow unset operations\n✅ Confirmed workflows pass with native performance",
+          "pastedContents": {}
+        },
+        {
+          "display": "But the case is that initially those docker images built for AMD. I run it here on ARM, but it finally need to be run on AMD linux HPC cluster (not multi-platform to save space). That's why I typically ran the docker here locally with AMD platrofm flag (for building and pulling). But I confused now.",
+          "pastedContents": {}
+        },
+        {
+          "display": "Now please proceed with initial testing.",
+          "pastedContents": {}
+        },
+        {
+          "display": "#For that project all the dockerfiles located at \"barskilab-workflows/tools/dockerfiles\" - NEVER create any dockerfile out of that directory. ALWAYS use those that are latest (check it out first) on docker hub. Use those dockerfiles to rebuild docker images ALWAYS using the biowardrobe/... naming with following after previous versions. RScripts and bash scripts that are uses by those dockerfiles located at the \"barskilab-workflows/tools/dockerfiles/scripts\" directory. ALWAYS update all CWL tools (from \"barskilab-workflows/tools\" dir) with the latest dockerfile version if you updated it - using efficient CLI tools check out which tools uses that docker image and update with latest. FOCUS on updating scripts (Rscript / bash) rather than CWL tools (but do it if it's necessary). ALWAYS check out if docker consists of reasonable layers and update if it's not efficient (but provide a reason first and critique). ",
+          "pastedContents": {}
+        },
+        {
+          "display": "#ALWAYS before starting to implement something create a step-by-step plan of manageble tasks - then critique it using reasoning chain-of-thoughts, then update plan and only then start to implement. ALWAYS provide a strong reason if some file have to be added or deleted. Critique that take and if it's still looks valid - proceed with implementation. ",
+          "pastedContents": {}
+        },
+        {
+          "display": "#Before doing git push ALWAYS make sure using reasoning and critique your own changes to make sure that there's no redundancy. Redundancy must be removed - in scripts, in directories (files) - you MUST keep things clean, manageble and providing key funcionality as a first priority. Focus on one thing per time - quality, not quantity matters. Always make sure you are following best practices of code / analysis. Get rid of \"extra\" stuff that only adds mess. ",
+          "pastedContents": {}
+        },
+        {
+          "display": "#Always use lintr and other (like styler from R, cwltool --valid from cwltool) tools before git push to make sure scripts doesn't contain errors. ",
+          "pastedContents": {}
+        },
+        {
+          "display": "#If you are repeating same command several times - put it into bash script to easier re-running without typing each time. ",
+          "pastedContents": {}
+        },
+        {
+          "display": "#Use advanced approaches/tools of operating in terminal and scripts to do everything efficiently.",
+          "pastedContents": {}
+        },
+        {
+          "display": "#Before git push check out that there's no large files (>150MB) that are loading into GitHub. Unstage them and add to .gitignore if there some. ",
+          "pastedContents": {}
+        },
+        {
+          "display": "#Before git push always using reasoning critique the changes making sure they are reasonable. ",
+          "pastedContents": {}
+        },
+        {
+          "display": "#After each reasonable (!!) changing do git commit with description of those changes also explaining the reason of that change.",
+          "pastedContents": {}
+        },
+        {
+          "display": "After each reasonable (!!) changing do git commit with description of those changes also explaining the reason of that change. ",
+          "pastedContents": {}
+        },
+        {
+          "display": "#Never create a new version of script using \"fixed/updated/final/enhanced/backup\" or other suffixes. Work with the files that are alreaady exists. ",
+          "pastedContents": {}
+        },
+        {
+          "display": "#Always use descriptive variable names",
+          "pastedContents": {}
+        },
+        {
+          "display": "/ide ",
+          "pastedContents": {}
+        },
+        {
+          "display": "/permissions ",
+          "pastedContents": {}
+        },
+        {
+          "display": "go to the my_local_test_data and figure out why all tests are fialed",
+          "pastedContents": {}
+        }
+      ],
+      "mcpContextUris": [],
+      "mcpServers": {},
+      "enabledMcpjsonServers": [],
+      "disabledMcpjsonServers": [],
+      "hasTrustDialogAccepted": true,
+      "projectOnboardingSeenCount": 0,
+      "hasClaudeMdExternalIncludesApproved": false,
+      "hasClaudeMdExternalIncludesWarningShown": false,
+      "hasCompletedProjectOnboarding": true,
+      "exampleFiles": [
+        "tools/deseq-lrt-step-1.cwl",
+        "tools/atac-lrt-step-1.cwl",
+        "tools/deseq-lrt-step-2.cwl",
+        "tools/dockerfiles/scripts/functions/deseq2_lrt_step_1/workflow.R",
+        "tools/deseq-advanced.cwl"
+      ],
+      "exampleFilesGeneratedAt": 1750729758146,
+      "lastCost": 3.266519349999999,
+      "lastAPIDuration": 1093887,
+      "lastDuration": 6892665,
+      "lastLinesAdded": 19,
+      "lastLinesRemoved": 10,
+      "lastTotalInputTokens": 95026,
+      "lastTotalOutputTokens": 31483,
+      "lastTotalCacheCreationInputTokens": 221425,
+      "lastTotalCacheReadInputTokens": 6656238,
+      "lastSessionId": "a5723502-0a7b-4350-8ebf-0fd2c41bfaa3"
+    },
+    "/Users/pavb5f/Documents/SCAP_scRNA": {
+      "allowedTools": [],
+      "history": [
+        {
+          "display": "Please revise and delete all recently added scripts like install_....... of R packages. But previously start with reasoingn and explain each one why it have to be removed and then remove. ANother LLM created a ton of it. Check out all recent files generated right in the SCAP_scRNA dir",
+          "pastedContents": {}
+        },
+        {
+          "display": "/status ",
+          "pastedContents": {}
+        },
+        {
+          "display": "/doctor ",
+          "pastedContents": {}
+        },
+        {
+          "display": "I have that warning message: R library paths: /opt/homebrew/Caskroom/mambaforge/base/lib/R/library /Library/Frameworks/R.framework/Versions/4.5-arm64/Resources/library Error in loadNamespace(\"jsonlite\") : there is no package called ‘jsonlite’ Calls: loadNamespace -> withRestarts -> withOneRestart -> doWithOneRestart Execution halted\\\nPlease proceed. ",
+          "pastedContents": {}
+        },
+        {
+          "display": "Ok you can try it. There's already another R installed - check out. xcode-select --install you can try but I guess it's not working anymore. Check it out and specifically - can you update it to the latest version (I mean that mamba R to make 4.5.1 to get bioconductor 3.21) because now it's like 4.4 or something.",
+          "pastedContents": {}
+        },
+        {
+          "display": "I have troubles installing Monocle3 package into my system. Current version of R is 4.5.1 and bioconductor 3.21. When I try to install the dependency packages for Monocle3 I stuck with org.Mm.eg.db - it get some segfault during installation. Please revise it and fix - I get you 2 web pages with instruction for Monocle3 installation and for the org.Mm.eg.db. Please proceed. https://cole-trapnell-lab.github.io/monocle3/docs/installation/ and https://bioconductor.org/packages/release/data/annotation/html/org.Mm.eg.db.html. I need it as soon as possible it's really crucial please do reasonable steps, analyse them, critique, don't stuck on some minor stuff. ",
+          "pastedContents": {}
+        },
+        {
+          "display": "/ide ",
+          "pastedContents": {}
+        },
+        {
+          "display": "Do compact before that and then 1. ",
+          "pastedContents": {}
+        },
+        {
+          "display": "1",
+          "pastedContents": {}
+        },
+        {
+          "display": "I'm interested specifically in Trajectory_Analysis",
+          "pastedContents": {}
+        },
+        {
+          "display": "Please carefully do git commit and critique your changes - using reasoning and chain of thoughts - after that you can commit and push. Then check out if there are all the packages availible that are needed for the analysis.",
+          "pastedContents": {}
+        },
+        {
+          "display": "It seems that xcode tools (xcode select) already installed",
+          "pastedContents": {}
+        },
+        {
+          "display": "I'm trying to install some packages for R but it doesn't work - please fix it up:[Pasted text #1 +29 lines]",
+          "pastedContents": {
+            "1": {
+              "id": 1,
+              "type": "text",
+              "content": "node.cpp -o xml2_node.o\nclang++ -arch arm64 -std=gnu++14 -I\"/Library/Frameworks/R.framework/Resources/include\" -DNDEBUG -I../inst/include -I/opt/homebrew/Caskroom/mambaforge/base/include/libxml2 -I/opt/homebrew/Caskroom/mambaforge/base/include -DUCHAR_TYPE=wchar_t -DU_SHOW_CPLUSPLUS_API=0 -DSTRICT_R_HEADERS -DR_NO_REMAP  -I/opt/R/arm64/include   -fPIC  -falign-functions=64 -Wall -g -O2  -c xml2_output.cpp -o xml2_output.o\nclang++ -arch arm64 -std=gnu++14 -I\"/Library/Frameworks/R.framework/Resources/include\" -DNDEBUG -I../inst/include -I/opt/homebrew/Caskroom/mambaforge/base/include/libxml2 -I/opt/homebrew/Caskroom/mambaforge/base/include -DUCHAR_TYPE=wchar_t -DU_SHOW_CPLUSPLUS_API=0 -DSTRICT_R_HEADERS -DR_NO_REMAP  -I/opt/R/arm64/include   -fPIC  -falign-functions=64 -Wall -g -O2  -c xml2_schema.cpp -o xml2_schema.o\nclang++ -arch arm64 -std=gnu++14 -I\"/Library/Frameworks/R.framework/Resources/include\" -DNDEBUG -I../inst/include -I/opt/homebrew/Caskroom/mambaforge/base/include/libxml2 -I/opt/homebrew/Caskroom/mambaforge/base/include -DUCHAR_TYPE=wchar_t -DU_SHOW_CPLUSPLUS_API=0 -DSTRICT_R_HEADERS -DR_NO_REMAP  -I/opt/R/arm64/include   -fPIC  -falign-functions=64 -Wall -g -O2  -c xml2_url.cpp -o xml2_url.o\nclang++ -arch arm64 -std=gnu++14 -I\"/Library/Frameworks/R.framework/Resources/include\" -DNDEBUG -I../inst/include -I/opt/homebrew/Caskroom/mambaforge/base/include/libxml2 -I/opt/homebrew/Caskroom/mambaforge/base/include -DUCHAR_TYPE=wchar_t -DU_SHOW_CPLUSPLUS_API=0 -DSTRICT_R_HEADERS -DR_NO_REMAP  -I/opt/R/arm64/include   -fPIC  -falign-functions=64 -Wall -g -O2  -c xml2_xpath.cpp -o xml2_xpath.o\nclang++ -arch arm64 -std=gnu++14 -dynamiclib -Wl,-headerpad_max_install_names -undefined dynamic_lookup -single_module -multiply_defined suppress -L/Library/Frameworks/R.framework/Resources/lib -L/opt/R/arm64/lib -o xml2.so connection.o init.o xml2_doc.o xml2_init.o xml2_namespace.o xml2_node.o xml2_output.o xml2_schema.o xml2_url.o xml2_xpath.o -L/opt/homebrew/Caskroom/mambaforge/base/lib -lxml2 -L/opt/homebrew/Caskroom/mambaforge/base/lib -lz -L/opt/homebrew/Caskroom/mambaforge/base/lib -llzma -L/opt/homebrew/Caskroom/mambaforge/base/lib -licui18n -licuuc -licudata -L/opt/homebrew/Caskroom/mambaforge/base/lib -liconv -F/Library/Frameworks/R.framework/.. -framework R -Wl,-framework -Wl,CoreFoundation\nld: -lto_library library filename must be 'libLTO.dylib'\nclang++: error: linker command failed with exit code 1 (use -v to see invocation)\nmake: *** [/Library/Frameworks/R.framework/Resources/share/make/shlib.mk:10: xml2.so] Error 1\nERROR: compilation failed for package ‘xml2’\n* removing ‘/Library/Frameworks/R.framework/Versions/4.1-arm64/Resources/library/xml2’\nERROR: dependency ‘xml2’ is not available for package ‘lintr’\n* removing ‘/Library/Frameworks/R.framework/Versions/4.1-arm64/Resources/library/lintr’\nERROR: dependency ‘xml2’ is not available for package ‘roxygen2’\n* removing ‘/Library/Frameworks/R.framework/Versions/4.1-arm64/Resources/library/roxygen2’\nERROR: dependencies ‘lintr’, ‘roxygen2’, ‘xml2’ are not available for package ‘languageserver’\n* removing ‘/Library/Frameworks/R.framework/Versions/4.1-arm64/Resources/library/languageserver’\n\nThe downloaded source packages are in\n        ‘/private/var/folders/g1/rdwg091j6g5_26_gqw3f_vlw0000gr/T/Rtmpdnva16/downloaded_packages’\nWarning messages:\n1: In install.packages(\"languageserver\", repos = \"https://cran.r-project.org/\") :\n  installation of package ‘xml2’ had non-zero exit status\n2: In install.packages(\"languageserver\", repos = \"https://cran.r-project.org/\") :\n  installation of package ‘lintr’ had non-zero exit status\n3: In install.packages(\"languageserver\", repos = \"https://cran.r-project.org/\") :\n  installation of package ‘roxygen2’ had non-zero exit status\n4: In install.packages(\"languageserver\", repos = \"https://cran.r-project.org/\") :\n  installation of package ‘languageserver’ had non-zero exit status\n *  Terminal will be reused by tasks, press any key to close it. "
+            }
+          }
+        },
+        {
+          "display": "exit()",
+          "pastedContents": {}
+        },
+        {
+          "display": "Please make sure all the required R packages are installed before running",
+          "pastedContents": {}
+        },
+        {
+          "display": "Now please proceed with analysis - run it, test it, check it out ",
+          "pastedContents": {}
+        },
+        {
+          "display": "Specifically analyse Trajectory_Analysis directory now. Analyse the structure, purposes, validness of the scripts and so on. Check out specifically the analysis flow, results, errors, incorrectnesses and so on. Then critique it and analyse again. Use reasoning. ",
+          "pastedContents": {}
+        },
+        {
+          "display": "/ide ",
+          "pastedContents": {}
+        },
+        {
+          "display": "/init ",
+          "pastedContents": {}
+        }
+      ],
+      "mcpContextUris": [],
+      "mcpServers": {},
+      "enabledMcpjsonServers": [],
+      "disabledMcpjsonServers": [],
+      "hasTrustDialogAccepted": true,
+      "projectOnboardingSeenCount": 1,
+      "hasClaudeMdExternalIncludesApproved": false,
+      "hasClaudeMdExternalIncludesWarningShown": false,
+      "exampleFiles": [
+        "run_approach_a_modular.R",
+        "core_functions.R",
+        "run_approach_b_modular.R",
+        "quality_control.R",
+        "trajectory_core.R"
+      ],
+      "exampleFilesGeneratedAt": 1750899716569,
+      "hasCompletedProjectOnboarding": true,
+      "lastCost": 0,
+      "lastAPIDuration": 0,
+      "lastDuration": 2672933,
+      "lastLinesAdded": 0,
+      "lastLinesRemoved": 0,
+      "lastTotalInputTokens": 0,
+      "lastTotalOutputTokens": 0,
+      "lastTotalCacheCreationInputTokens": 0,
+      "lastTotalCacheReadInputTokens": 0,
+      "lastSessionId": "59e17743-7f09-48e1-b064-cf7a34f3e6f3"
+    }
+  },
+  "oauthAccount": {
+    "accountUuid": "462d25a8-4ff3-4f2e-9202-971ada2b025e",
+    "emailAddress": "pavlvalera3301@gmail.com",
+    "organizationUuid": "68f3bc88-14d2-4498-93ac-d004256f1945",
+    "organizationRole": "admin",
+    "workspaceRole": null,
+    "organizationName": "pavlvalera3301@gmail.com's Organization"
+  },
+  "shiftEnterKeyBindingInstalled": true,
+  "hasCompletedOnboarding": true,
+  "lastOnboardingVersion": "1.0.31",
+  "cachedChangelog": "# Changelog\n\n## 1.0.35\n\n- Added support for MCP OAuth Authorization Server discovery\n\n## 1.0.34\n\n- Fixed a memory leak causing a MaxListenersExceededWarning message to appear\n\n## 1.0.33\n\n- Improved logging functionality with session ID support\n- Added undo functionality (Ctrl+Z and vim 'u' command)\n- Improvements to plan mode\n\n## 1.0.32\n\n- Updated loopback config for litellm\n- Added forceLoginMethod setting to bypass login selection screen\n\n## 1.0.31\n\n- Fixed a bug where ~/.claude.json would get reset when file contained invalid JSON\n\n## 1.0.30\n\n- Custom slash commands: Run bash output, @-mention files, enable thinking with thinking keywords\n- Improved file path autocomplete with filename matching\n- Added timestamps in Ctrl-r mode and fixed Ctrl-c handling\n- Enhanced jq regex support for complex filters with pipes and select\n\n## 1.0.29\n\n- Improved CJK character support in cursor navigation and rendering\n\n## 1.0.28\n\n- Slash commands: Fix selector display during history navigation\n- Resizes images before upload to prevent API size limit errors\n- Added XDG_CONFIG_HOME support to configuration directory\n- Performance optimizations for memory usage\n- New attributes (terminal.type, language) in OpenTelemetry logging\n\n## 1.0.27\n\n- Streamable HTTP MCP servers are now supported\n- Remote MCP servers (SSE and HTTP) now support OAuth\n- MCP resources can now be @-mentioned\n- /resume slash command to switch conversations within Claude Code\n\n## 1.0.25\n\n- Slash commands: moved \"project\" and \"user\" prefixes to descriptions\n- Slash commands: improved reliability for command discovery\n- Improved support for Ghostty\n- Improved web search reliability\n\n## 1.0.24\n\n- Improved /mcp output\n- Fixed a bug where settings arrays got overwritten instead of merged\n\n## 1.0.23\n\n- Released TypeScript SDK: import @anthropic-ai/claude-code to get started\n- Released Python SDK: pip install claude-code-sdk to get started\n\n## 1.0.22\n\n- SDK: Renamed `total_cost` to `total_cost_usd`\n\n## 1.0.21\n\n- Improved editing of files with tab-based indentation\n- Fix for tool_use without matching tool_result errors\n- Fixed a bug where stdio MCP server processes would linger after quitting Claude Code\n\n## 1.0.18\n\n- Added --add-dir CLI argument for specifying additional working directories\n- Added streaming input support without require -p flag\n- Improved startup performance and session storage performance\n- Added CLAUDE_BASH_MAINTAIN_PROJECT_WORKING_DIR environment variable to freeze working directory for bash commands\n- Added detailed MCP server tools display (/mcp)\n- MCP authentication and permission improvements\n- Added auto-reconnection for MCP SSE connections on disconnect\n- Fixed issue where pasted content was lost when dialogs appeared\n\n## 1.0.17\n\n- We now emit messages from sub-tasks in -p mode (look for the parent_tool_use_id property)\n- Fixed crashes when the VS Code diff tool is invoked multiple times quickly\n- MCP server list UI improvements\n- Update Claude Code process title to display \"claude\" instead of \"node\"\n\n## 1.0.11\n\n- Claude Code can now also be used with a Claude Pro subscription\n- Added /upgrade for smoother switching to Claude Max plans\n- Improved UI for authentication from API keys and Bedrock/Vertex/external auth tokens\n- Improved shell configuration error handling\n- Improved todo list handling during compaction\n\n## 1.0.10\n\n- Added markdown table support\n- Improved streaming performance\n\n## 1.0.8\n\n- Fixed Vertex AI region fallback when using CLOUD_ML_REGION\n- Increased default otel interval from 1s -> 5s\n- Fixed edge cases where MCP_TIMEOUT and MCP_TOOL_TIMEOUT weren't being respected\n- Fixed a regression where search tools unnecessarily asked for permissions\n- Added support for triggering thinking non-English languages\n- Improved compacting UI\n\n## 1.0.7\n\n- Renamed /allowed-tools -> /permissions\n- Migrated allowedTools and ignorePatterns from .claude.json -> settings.json\n- Deprecated claude config commands in favor of editing settings.json\n- Fixed a bug where --dangerously-skip-permissions sometimes didn't work in --print mode\n- Improved error handling for /install-github-app\n- Bugfixes, UI polish, and tool reliability improvements\n\n## 1.0.6\n\n- Improved edit reliability for tab-indented files\n- Respect CLAUDE_CONFIG_DIR everywhere\n- Reduced unnecessary tool permission prompts\n- Added support for symlinks in @file typeahead\n- Bugfixes, UI polish, and tool reliability improvements\n\n## 1.0.4\n\n- Fixed a bug where MCP tool errors weren't being parsed correctly\n\n## 1.0.1\n\n- Added `DISABLE_INTERLEAVED_THINKING` to give users the option to opt out of interleaved thinking.\n- Improved model references to show provider-specific names (Sonnet 3.7 for Bedrock, Sonnet 4 for Console)\n- Updated documentation links and OAuth process descriptions\n\n## 1.0.0\n\n- Claude Code is now generally available\n- Introducing Sonnet 4 and Opus 4 models\n\n## 0.2.125\n\n- Breaking change: Bedrock ARN passed to `ANTHROPIC_MODEL` or `ANTHROPIC_SMALL_FAST_MODEL` should no longer contain an escaped slash (specify `/` instead of `%2F`)\n- Removed `DEBUG=true` in favor of `ANTHROPIC_LOG=debug`, to log all requests\n\n## 0.2.117\n\n- Breaking change: --print JSON output now returns nested message objects, for forwards-compatibility as we introduce new metadata fields\n- Introduced settings.cleanupPeriodDays\n- Introduced CLAUDE_CODE_API_KEY_HELPER_TTL_MS env var\n- Introduced --debug mode\n\n## 0.2.108\n\n- You can now send messages to Claude while it works to steer Claude in real-time\n- Introduced BASH_DEFAULT_TIMEOUT_MS and BASH_MAX_TIMEOUT_MS env vars\n- Fixed a bug where thinking was not working in -p mode\n- Fixed a regression in /cost reporting\n- Deprecated MCP wizard interface in favor of other MCP commands\n- Lots of other bugfixes and improvements\n\n## 0.2.107\n\n- CLAUDE.md files can now import other files. Add @path/to/file.md to ./CLAUDE.md to load additional files on launch\n\n## 0.2.106\n\n- MCP SSE server configs can now specify custom headers\n- Fixed a bug where MCP permission prompt didn't always show correctly\n\n## 0.2.105\n\n- Claude can now search the web\n- Moved system & account status to /status\n- Added word movement keybindings for Vim\n- Improved latency for startup, todo tool, and file edits\n\n## 0.2.102\n\n- Improved thinking triggering reliability\n- Improved @mention reliability for images and folders\n- You can now paste multiple large chunks into one prompt\n\n## 0.2.100\n\n- Fixed a crash caused by a stack overflow error\n- Made db storage optional; missing db support disables --continue and --resume\n\n## 0.2.98\n\n- Fixed an issue where auto-compact was running twice\n\n## 0.2.96\n\n- Claude Code can now also be used with a Claude Max subscription (https://claude.ai/upgrade)\n\n## 0.2.93\n\n- Resume conversations from where you left off from with \"claude --continue\" and \"claude --resume\"\n- Claude now has access to a Todo list that helps it stay on track and be more organized\n\n## 0.2.82\n\n- Added support for --disallowedTools\n- Renamed tools for consistency: LSTool -> LS, View -> Read, etc.\n\n## 0.2.75\n\n- Hit Enter to queue up additional messages while Claude is working\n- Drag in or copy/paste image files directly into the prompt\n- @-mention files to directly add them to context\n- Run one-off MCP servers with `claude --mcp-config <path-to-file>`\n- Improved performance for filename auto-complete\n\n## 0.2.74\n\n- Added support for refreshing dynamically generated API keys (via apiKeyHelper), with a 5 minute TTL\n- Task tool can now perform writes and run bash commands\n\n## 0.2.72\n\n- Updated spinner to indicate tokens loaded and tool usage\n\n## 0.2.70\n\n- Network commands like curl are now available for Claude to use\n- Claude can now run multiple web queries in parallel\n- Pressing ESC once immediately interrupts Claude in Auto-accept mode\n\n## 0.2.69\n\n- Fixed UI glitches with improved Select component behavior\n- Enhanced terminal output display with better text truncation logic\n\n## 0.2.67\n\n- Shared project permission rules can be saved in .claude/settings.json\n\n## 0.2.66\n\n- Print mode (-p) now supports streaming output via --output-format=stream-json\n- Fixed issue where pasting could trigger memory or bash mode unexpectedly\n\n## 0.2.63\n\n- Fixed an issue where MCP tools were loaded twice, which caused tool call errors\n\n## 0.2.61\n\n- Navigate menus with vim-style keys (j/k) or bash/emacs shortcuts (Ctrl+n/p) for faster interaction\n- Enhanced image detection for more reliable clipboard paste functionality\n- Fixed an issue where ESC key could crash the conversation history selector\n\n## 0.2.59\n\n- Copy+paste images directly into your prompt\n- Improved progress indicators for bash and fetch tools\n- Bugfixes for non-interactive mode (-p)\n\n## 0.2.54\n\n- Quickly add to Memory by starting your message with '#'\n- Press ctrl+r to see full output for long tool results\n- Added support for MCP SSE transport\n\n## 0.2.53\n\n- New web fetch tool lets Claude view URLs that you paste in\n- Fixed a bug with JPEG detection\n\n## 0.2.50\n\n- New MCP \"project\" scope now allows you to add MCP servers to .mcp.json files and commit them to your repository\n\n## 0.2.49\n\n- Previous MCP server scopes have been renamed: previous \"project\" scope is now \"local\" and \"global\" scope is now \"user\"\n\n## 0.2.47\n\n- Press Tab to auto-complete file and folder names\n- Press Shift + Tab to toggle auto-accept for file edits\n- Automatic conversation compaction for infinite conversation length (toggle with /config)\n\n## 0.2.44\n\n- Ask Claude to make a plan with thinking mode: just say 'think' or 'think harder' or even 'ultrathink'\n\n## 0.2.41\n\n- MCP server startup timeout can now be configured via MCP_TIMEOUT environment variable\n- MCP server startup no longer blocks the app from starting up\n\n## 0.2.37\n\n- New /release-notes command lets you view release notes at any time\n- `claude config add/remove` commands now accept multiple values separated by commas or spaces\n\n## 0.2.36\n\n- Import MCP servers from Claude Desktop with `claude mcp add-from-claude-desktop`\n- Add MCP servers as JSON strings with `claude mcp add-json <n> <json>`\n\n## 0.2.34\n\n- Vim bindings for text input - enable with /vim or /config\n\n## 0.2.32\n\n- Interactive MCP setup wizard: Run \"claude mcp add\" to add MCP servers with a step-by-step interface\n- Fix for some PersistentShell issues\n\n## 0.2.31\n\n- Custom slash commands: Markdown files in .claude/commands/ directories now appear as custom slash commands to insert prompts into your conversation\n- MCP debug mode: Run with --mcp-debug flag to get more information about MCP server errors\n\n## 0.2.30\n\n- Added ANSI color theme for better terminal compatibility\n- Fixed issue where slash command arguments weren't being sent properly\n- (Mac-only) API keys are now stored in macOS Keychain\n\n## 0.2.26\n\n- New /approved-tools command for managing tool permissions\n- Word-level diff display for improved code readability\n- Fuzzy matching for slash commands\n\n## 0.2.21\n\n- Fuzzy matching for /commands\n",
+  "changelogLastFetched": 1750942433970,
+  "lastReleaseNotesSeen": "1.0.35",
+  "subscriptionNoticeCount": 0,
+  "hasAvailableSubscription": false,
+  "hasIdeOnboardingBeenShown": {
+    "cursor": true
+  },
+  "fallbackAvailableWarningThreshold": 0.5
+}

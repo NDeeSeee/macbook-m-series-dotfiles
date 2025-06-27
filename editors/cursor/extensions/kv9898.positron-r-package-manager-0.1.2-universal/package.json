@@ -1,0 +1,186 @@
+{
+	"name": "positron-r-package-manager",
+	"displayName": "%display.name%",
+	"description": "%description%",
+	"version": "0.1.2",
+	"publisher": "kv9898",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/kv9898/positron-r-package-manager.git"
+	},
+	"icon": "resources/icon.png",
+	"license": "MIT",
+	"extensionKind": [
+		"workspace"
+	],
+	"engines": {
+		"vscode": "^1.96.0"
+	},
+	"categories": [
+		"Programming Languages",
+		"Data Science",
+		"Visualization"
+	],
+	"keywords": [
+		"R",
+		"package",
+		"Positron",
+		"install",
+		"uninstall",
+		"update",
+		"CRAN",
+		"search"
+	],
+	"activationEvents": [],
+	"main": "./dist/extension.js",
+	"contributes": {
+		"configuration": {
+			"title": "%short.name%",
+			"properties": {
+				"positron-r-package-manager.filterOutdatedIfUpToDateElsewhere": {
+					"type": "boolean",
+					"scope": "machine-overridable",
+					"default": true,
+					"description": "%filterOutdatedIfUpToDateElsewhere%"
+				},
+				"positron-r-package-manager.showRIcon": {
+					"type": "boolean",
+					"scope": "application",
+					"default": false,
+					"description": "%showRIcon%"
+				}
+			}
+		},
+		"commands": [
+			{
+				"command": "positron-r-package-manager.installPackages",
+				"title": "%install.packages%",
+				"icon": "$(desktop-download)"
+			},
+			{
+				"command": "positron-r-package-manager.uninstallPackage",
+				"title": "%uninstall.package%",
+				"icon": "$(trash)"
+			},
+			{
+				"command": "positron-r-package-manager.updatePackages",
+				"title": "%update.packages%",
+				"icon": "$(arrow-circle-up)"
+			},
+			{
+				"command": "positron-r-package-manager.refreshPackages",
+				"title": "%refresh.packages%",
+				"icon": "$(refresh)"
+			},
+			{
+				"command": "positron-r-package-manager.searchPackages",
+				"title": "%search.packages%",
+				"icon": "$(search)"
+			},
+			{
+				"command": "positron-r-package-manager.filterLoadedPackages",
+				"title": "%filterLoadedPackages%",
+				"icon": "$(filter)"
+			}
+		],
+		"viewsContainers": {
+			"activitybar": [
+				{
+					"id": "positron-r-packages",
+					"title": "%packages%",
+					"icon": "$(book)"
+				}
+			]
+		},
+		"views": {
+			"positron-r-packages": [
+				{
+					"id": "rPackageView",
+					"name": "R",
+					"icon": "$(book)"
+				}
+			]
+		},
+		"menus": {
+			"view/title": [
+				{
+					"command": "positron-r-package-manager.installPackages",
+					"when": "view == rPackageView",
+					"group": "navigation@1"
+				},
+				{
+					"command": "positron-r-package-manager.updatePackages",
+					"when": "view == rPackageView",
+					"group": "navigation@2"
+				},
+				{
+					"command": "positron-r-package-manager.searchPackages",
+					"when": "view == rPackageView",
+					"group": "navigation@99"
+				},
+				{
+					"command": "positron-r-package-manager.filterLoadedPackages",
+					"when": "view == rPackageView",
+					"group": "navigation@3",
+					"toggle": true
+				},
+				{
+					"command": "positron-r-package-manager.refreshPackages",
+					"when": "view == rPackageView",
+					"group": "navigation@100"
+				}
+			],
+			"view/item/context": [
+				{
+					"command": "positron-r-package-manager.uninstallPackage",
+					"when": "view == rPackageView && viewItem == rPackage",
+					"group": "inline@999"
+				}
+			]
+		}
+	},
+	"scripts": {
+		"vscode:prepublish": "yarn run package",
+		"compile": "webpack",
+		"watch": "webpack --watch",
+		"package": "webpack --mode production --devtool hidden-source-map",
+		"compile-tests": "tsc -p . --outDir out",
+		"watch-tests": "tsc -p . -w --outDir out",
+		"pretest": "yarn run compile-tests && yarn run compile && yarn run lint",
+		"lint": "eslint src",
+		"test": "vscode-test"
+	},
+	"devDependencies": {
+		"@types/fuzzaldrin-plus": "^0.6.5",
+		"@types/mocha": "^10.0.10",
+		"@types/node": "20.x",
+		"@types/vscode": "1.96.0",
+		"@typescript-eslint/eslint-plugin": "^8.25.0",
+		"@typescript-eslint/parser": "^8.25.0",
+		"@vscode/test-cli": "^0.0.10",
+		"@vscode/test-electron": "^2.4.1",
+		"eslint": "^9.21.0",
+		"ts-loader": "^9.5.2",
+		"typescript": "^5.7.3",
+		"webpack": "^5.98.0",
+		"webpack-cli": "^6.0.1"
+	},
+	"dependencies": {
+		"fuzzaldrin-plus": "^0.6.0"
+	},
+	"l10n": "./l10n",
+	"__metadata": {
+		"id": "00081226-d041-40a6-bfd1-4104afcb71c1",
+		"publisherId": "fb506837-fde5-4dfe-b549-0b7790307e85",
+		"publisherDisplayName": "kv9898",
+		"targetPlatform": "universal",
+		"isApplicationScoped": false,
+		"isPreReleaseVersion": false,
+		"hasPreReleaseVersion": false,
+		"installedTimestamp": 1750938159180,
+		"pinned": false,
+		"preRelease": false,
+		"source": "gallery",
+		"size": 173962
+	}
+}

@@ -1,0 +1,40 @@
+{
+	"name": "vscode-cwl",
+	"displayName": "vscode-cwl",
+	"description": "CWL support",
+	"version": "0.0.1",
+	"publisher": "manabuishii",
+	"engines": {
+		"vscode": "^1.17.0"
+	},
+	"categories": [
+		"Languages"
+	],
+	"contributes": {
+		"languages": [
+			{
+				"id": "cwl",
+				"aliases": [
+					"cwl",
+					"cwl"
+				],
+				"extensions": [
+					"cwl"
+				],
+				"configuration": "./language-configuration.json"
+			}
+		],
+		"grammars": [
+			{
+				"language": "cwl",
+				"scopeName": "source.cwl",
+				"path": "./syntaxes/cwl.tmLanguage.json"
+			}
+		]
+	},
+	"__metadata": {
+		"installedTimestamp": 1750725294923,
+		"targetPlatform": "undefined",
+		"size": 16967
+	}
+}
